@@ -1,0 +1,21 @@
+{
+  "name": "web-framework-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "server": "npx json-server -w db.json",
+    "dev": "npx parcel index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^0.19.0"
+  },
+  "devDependencies": {
+    "json-server": "^0.15.1",
+    "parcel-bundler": "^1.12.3",
+    "typescript": "^3.6.2"
+  }
+}
