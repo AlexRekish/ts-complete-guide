@@ -1,19 +1,21 @@
+import { Model } from './Model';
 import { Attributes } from './Attributes';
-import { Sync } from './Sync';
+import { ApiSync } from './ApiSync';
 import { Eventing } from './Eventing';
 
-interface UserProps {
+export interface UserProps {
   id?: number;
   name?: string;
   age?: number;
 }
 
-export class User {
-  events: Eventing = new Eventing();
-  sync: Sync<UserProps> = new Sync<UserProps>();
-  attributes: Attributes<UserProps>;
+export class User extends Model<UserProps> {
+  static buildUser(attrs: UserProps): User {
+    return new User(new Attributes<UserProps>(attrs), new Eventing(), new ApiSync<UserProps>());
+  }
 
-  constructor(attrs: UserProps) {
-    this.attributes = new Attributes<UserProps>(attrs);
+  setRandomAge(): void {
+    const age = Math.round(Math.random() * 100);
+    this.set({ age });
   }
 }
